@@ -2,4 +2,3 @@ vendor/*
 coverage/*
 deptrac.phar
 depfile.yml
-bin/*

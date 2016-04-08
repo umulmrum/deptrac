@@ -8,6 +8,7 @@ use SensioLabs\Deptrac\CollectorFactory;
 use Prophecy\Argument;
 use SensioLabs\AstRunner\AstMap;
 use SensioLabs\AstRunner\AstParser\AstClassReferenceInterface;
+use SensioLabs\AstRunner\AstParser\AstParserInterface;
 
 class BoolCollectorTest extends \PHPUnit_Framework_TestCase
 {
@@ -20,7 +21,9 @@ class BoolCollectorTest extends \PHPUnit_Framework_TestCase
             [],
             $this->prophesize(AstClassReferenceInterface::class)->reveal(),
             $this->prophesize(AstMap::class)->reveal(),
-            $this->prophesize(CollectorFactory::class)->reveal()
+            $this->prophesize(CollectorFactory::class)->reveal(),
+            $this->prophesize(AstParserInterface::class)->reveal()
+
         );
 
         $this->assertEquals(true, $stat);
@@ -38,7 +41,8 @@ class BoolCollectorTest extends \PHPUnit_Framework_TestCase
             ['type' => $returns, 'foo' => 'bar'],
             Argument::type(AstClassReferenceInterface::class),
             Argument::type(AstMap::class),
-            Argument::type(CollectorFactory::class)
+            Argument::type(CollectorFactory::class),
+            Argument::type(AstParserInterface::class)
         )->willReturn($returns);
 
         return $collector->reveal();
@@ -173,7 +177,8 @@ class BoolCollectorTest extends \PHPUnit_Framework_TestCase
             $configuration,
             $this->prophesize(AstClassReferenceInterface::class)->reveal(),
             $this->prophesize(AstMap::class)->reveal(),
-            $collectorFactory->reveal()
+            $collectorFactory->reveal(),
+            $this->prophesize(AstParserInterface::class)->reveal()
         );
 
         $this->assertEquals($expected, $stat);

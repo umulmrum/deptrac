@@ -11,6 +11,7 @@ use SensioLabs\Deptrac\Configuration\ConfigurationLayer;
 use Prophecy\Argument;
 use SensioLabs\AstRunner\AstMap;
 use SensioLabs\AstRunner\AstParser\AstClassReferenceInterface;
+use SensioLabs\AstRunner\AstParser\AstParserInterface;
 
 class ClassNameLayerResolverTest extends \PHPUnit_Framework_TestCase
 {
@@ -30,6 +31,7 @@ class ClassNameLayerResolverTest extends \PHPUnit_Framework_TestCase
             Argument::type(AstClassReferenceInterface::class),
             Argument::type(AstMap::class),
             Argument::type(CollectorFactory::class)
+            Argument::type(AstParserInterface::class)
         )->willReturn($return);
 
         return $collector->reveal();

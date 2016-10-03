@@ -19,3 +19,8 @@ tests: composer-install-dev
 
 tests-coverage: composer-install-dev
 	$(PHP_BIN) ./vendor/phpunit/phpunit/phpunit -c . --coverage-html coverage
+
+
+test-integration-sylius:
+	#git clone git@github.com:Sylius/Sylius.git /tmp/c1023228a
+	php deptrac.php analyze examples/symfony_depfile.yml
